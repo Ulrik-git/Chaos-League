@@ -33,9 +33,18 @@ generateButton.addEventListener('click', () => {
     fetch('https://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json')
         .then(response => response.json())
         .then(data => {
+            let keys = Object.keys(data.data);
+            let usedKeys = []; // store used keys
+
             for(let i = 0; i < 5; i++) {
-                let keys = Object.keys(data.data);
-                let nthElement = data.data[keys[Math.round(Math.random() * keys.length)]];
+                let nthKey;
+                do {
+                    nthKey = keys[Math.round(Math.random() * keys.length)];
+                } while (usedKeys.includes(nthKey)); // fetch a new key if it's already used
+
+                usedKeys.push(nthKey); // add the used key to the array
+
+                let nthElement = data.data[nthKey];
                 
                 let championDiv = document.createElement('div');
                 championDiv.className = 'championDiv';
@@ -45,7 +54,11 @@ generateButton.addEventListener('click', () => {
                 championDiv.appendChild(p);
 
                 let img = document.createElement('img');
-                img.src = `https://ddragon.leagueoflegends.com/cdn/12.4.1/img/champion/${nthElement.id}.png`;
+                if (nthElement.id == "FiddleSticks") {
+                    img.src = `https://ddragon.leagueoflegends.com/cdn/12.4.1/img/champion/${nthElement.name}.png`;
+                } else {
+                    img.src = `https://ddragon.leagueoflegends.com/cdn/12.4.1/img/champion/${nthElement.id}.png`;
+                }
                 championDiv.appendChild(img);
 
                 let roleIndex = Math.floor(Math.random() * rolesCopy.length);
