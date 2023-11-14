@@ -20,15 +20,21 @@ function shuffleArray(array) {
 generateButton.addEventListener('click', () => {
     mainElement.innerHTML = ''; // clear the previous results
 
-    let names = nameInput.value.split(',');
-    if (names.length > 5) {
-        alert('Please enter up to 5 names.');
+    let namesAndRoles = nameInput.value.split(',').map(item => item.trim());
+    if (namesAndRoles.length > 5) {
+        alert('Please enter up to 5 names and roles.');
         return;
     }
 
-    shuffleArray(names); // shuffle the names array
+    let names = namesAndRoles.map(item => item.split(':')[0]);
+    let roles = namesAndRoles.map(item => item.split(':')[1]);
 
-    let rolesCopy = [...roles]; // create a copy of the roles array
+    // Check if all roles are unique
+    let uniqueRoles = new Set(roles);
+    if (uniqueRoles.size !== roles.length) {
+        alert('Each person must have a unique role.');
+        return;
+    }
 
     fetch('https://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json')
         .then(response => response.json())
@@ -61,11 +67,9 @@ generateButton.addEventListener('click', () => {
                 }
                 championDiv.appendChild(img);
 
-                let roleIndex = Math.floor(Math.random() * rolesCopy.length);
                 let roleP = document.createElement('p');
-                roleP.textContent = rolesCopy[roleIndex];
+                roleP.textContent = roles[i];
                 championDiv.appendChild(roleP);
-                rolesCopy.splice(roleIndex, 1); // remove the used role from the array
 
                 if (names[i]) {
                     let nameP = document.createElement('p');
