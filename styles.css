@@ -1,0 +1,69 @@
+body {
+    background-image: url('https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltf051c846028f913f/5dc319ce174f6e021220cf50/bg-twisted-treeline_2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+}
+
+#main {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#main p {
+    display: flex;
+}
+
+.placeholder {
+    margin: auto;
+}
+
+p {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    margin: 2%;
+}
+
+.championDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+}
+
+#nameInput {
+    width: 80%;
+    padding: 10px;
+    margin: 20px auto;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+}
+
+#generateButton {
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#generateButton:hover {
+    background-color: #45a049;
+}
