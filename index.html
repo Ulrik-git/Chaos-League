@@ -6,9 +6,24 @@
     </head>
     <body>
         <h1>Chaos league</h1>
-        <input id="nameInput" type="text" placeholder="Enter names, separated by commas, or use this format for roles: player1: role1, player2: role2 and so on...">
-        <button id="generateButton">Generate</button>
-        <div id="main"></div>
-        <script src="scripts.js"></script>
+        <div class="buttons">
+            <button id="chaosButton">Chaos Mode</button>
+            <button id="randomButton">Random Mode</button>
+        </div>
+        <div id="chaosMode">
+            <input id="nameInput" type="text" placeholder="Enter names, separated by commas, or use this format for roles: player1: role1, player2: role2 and so on...">
+            <button id="generateButton">Generate</button>
+            <div id="main"></div>
+        </div>
+        <div id="randomMode" style="display: none;">
+            <button class="roleButton" data-role="top" style="background-image: url('./assets/Position_Bronze-Top.png')"></button>
+            <button class="roleButton" data-role="jungle" style="background-image: url('/assets/Position_Bronze-Jungle.png')"></button>
+            <button class="roleButton" data-role="mid" style="background-image: url('/assets/Position_Bronze-Mid.png')"></button>
+            <button class="roleButton" data-role="bot" style="background-image: url('/assets/Position_Bronze-Bot.png')"></button>
+            <button class="roleButton" data-role="support" style="background-image: url('/assets/Position_Bronze-Support.png')"></button>
+            <div id="randomMain"></div>
+        </div>
+        <script src="chaos_mode.js"></script>
+        <script type="module" src="random_mode.js"></script>
     </body>
 </html>
